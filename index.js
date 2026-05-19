@@ -1,11 +1,11 @@
 // const {add,sub}=require("./math")
 // console.log('Hello, World!');
 // console.log("sum is",add(2,3)) 
-
+require('dotenv').config();
 const fs=require('fs')
 const express=require("express");
 const users=require('./MOCK_DATA.json');     // loded data once server starts in RAM
-const PORT=8000;
+
 const app=express();
 
 
@@ -23,6 +23,9 @@ app.get('/api/users',(req,res)=>{
 //     console.log(t)
 //     res.json(users);
 // });
+app.get("/",(req,res)=>{ 
+     return res.send("<h1>hi this is kunal singh bhumihar</h1>");
+})
 
 app.get('/users',(req,res)=>{ 
    const html=`<ul>
@@ -50,4 +53,4 @@ app.post("/api/users",(req,res)=>{
 })
 
 
-app.listen(PORT,()=>console.log(`server started at port ${PORT}`));
+app.listen(process.env.PORT,()=>console.log(`server started at port ${process.env.PORT}`));
